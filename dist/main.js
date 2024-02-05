@@ -4,6 +4,10 @@ let inp_description = document.querySelector('.to_do_description');
 let btn_add_task = document.querySelector('.addTask');
 let task_boxes = document.querySelector('.to_do_boxes');
 let empty_array = [];
+let storedData = window.localStorage.getItem("tasks");
+if (storedData) {
+    empty_array = JSON.parse(storedData);
+}
 btn_add_task.addEventListener('click', (e) => {
     e.preventDefault();
     if (inp_description.value === '') {
@@ -48,13 +52,6 @@ const add_task_to_page = (empty_array) => {
         task_box.appendChild(box_title);
         task_box.appendChild(box_description);
         task_boxes.appendChild(task_box);
-        let footer_controls = document.createElement('div');
-        footer_controls.className = 'footer_controls';
-        let finally_btn = document.createElement('button');
-        finally_btn.className = 'remove';
-        finally_btn.appendChild(document.createTextNode('remove'));
-        footer_controls.appendChild(finally_btn);
-        task_box.appendChild(footer_controls);
         if (task.finally === true) {
             task_box.id = 'done';
         }
@@ -71,4 +68,5 @@ function get_data_localStorage() {
         add_task_to_page(tasks);
     }
 }
+get_data_localStorage();
 //# sourceMappingURL=main.js.map

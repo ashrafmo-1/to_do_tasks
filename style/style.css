@@ -64,18 +64,22 @@ label{
     display: flex;
     flex-direction: column;
 }
+
+.tasks_content{
+    width: 80%;
+    margin: auto;
+}
 .to_do_boxes {
     margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 40px;
 
     .to_do_box {
-        min-width: 300px;
         background-color: #eee;
         border-radius: 3px;
         border: 1px solid #e1e1e1;
+        
         .to_do_box_title{
             background-color: #e1e1e1;
             padding: 2px 4px;
@@ -83,28 +87,8 @@ label{
         .to_do_box_description{
             margin: 10px 0 10px 0;
             padding-inline: 4px;
+            color: #777;
+            overflow-wrap:break-word;
         }
     }
-}
-
-.footer_controls {
-    background-color: rgba(0, 0, 255, 0.39);
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .remove {
-        font-size: 16px;
-        padding: 2px 4px;
-        border-radius: 4px;
-        font-weight: bold;
-        cursor: pointer;
-        text-transform: capitalize;
-    }
-}
-
-.remove.done{
-    color: red;
-    
 }
