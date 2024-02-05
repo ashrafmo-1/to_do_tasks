@@ -3,7 +3,8 @@ let inp_title = <HTMLInputElement> document.querySelector('.to_do_title');
 let inp_description = <HTMLInputElement> document.querySelector('.to_do_description');
 let btn_add_task = <HTMLButtonElement> document.querySelector('.addTask');
 let task_boxes = <HTMLDivElement> document.querySelector('.to_do_boxes');
-let empty_array: any = [];
+let empty_array: any[] = [];
+
 
 // start on click "btn_add_task"
 btn_add_task.addEventListener('click', (e) => {
@@ -32,6 +33,9 @@ const add_task_to_arr = (title: string | number, desc: string | number) => {
     console.log(empty_array);
     // add data to page
     add_task_to_page(empty_array);
+
+    // add data to local storage
+    set_data_localStorage(empty_array)
 }
 
 const add_task_to_page = (empty_array: any) => {
@@ -64,11 +68,22 @@ const add_task_to_page = (empty_array: any) => {
         if (task.finally === true) {
             task_box.id = 'done';
         }
+        
     });
 }
 
-task_boxes.addEventListener('click', (e: any) => {
-    if (e.target.classList.contains("to_do_box")) {
-        e.target.classList.toggle("done");
+// set data on localStorage
+function set_data_localStorage(empty_array: any) {
+    let x = window.localStorage.setItem("tasks", JSON.stringify(empty_array))
+    console.log(x);
+    
+}
+
+// get data on localStorage
+function get_data_localStorage() {
+    let data = window.localStorage.getItem("tasks");
+    if(data) {
+        let tasks = JSON.parse(data);
+        add_task_to_page(tasks)
     }
-})
+}

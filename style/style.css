@@ -94,7 +94,7 @@ label{
     justify-content: center;
     align-items: center;
 
-    .remove{
+    .remove {
         font-size: 16px;
         padding: 2px 4px;
         border-radius: 4px;
@@ -102,4 +102,9 @@ label{
         cursor: pointer;
         text-transform: capitalize;
     }
+}
+
+.remove.done{
+    color: red;
+    
 }

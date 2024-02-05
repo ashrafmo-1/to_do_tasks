@@ -28,6 +28,7 @@ const add_task_to_arr = (title, desc) => {
     empty_array.push(task);
     console.log(empty_array);
     add_task_to_page(empty_array);
+    set_data_localStorage(empty_array);
 };
 const add_task_to_page = (empty_array) => {
     task_boxes.innerHTML = '';
@@ -59,9 +60,15 @@ const add_task_to_page = (empty_array) => {
         }
     });
 };
-task_boxes.addEventListener('click', (e) => {
-    if (e.target.classList.contains("to_do_box")) {
-        e.target.classList.toggle("done");
+function set_data_localStorage(empty_array) {
+    let x = window.localStorage.setItem("tasks", JSON.stringify(empty_array));
+    console.log(x);
+}
+function get_data_localStorage() {
+    let data = window.localStorage.getItem("tasks");
+    if (data) {
+        let tasks = JSON.parse(data);
+        add_task_to_page(tasks);
     }
-});
+}
 //# sourceMappingURL=main.js.map
