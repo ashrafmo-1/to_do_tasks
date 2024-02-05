@@ -45,6 +45,7 @@ form {
             border-radius: 4px;
             font-size: 20px;
             border: 1px solid #e1e1e1;
+            padding-inline: 4px;
         }
     }
     .addTask {
@@ -71,7 +72,7 @@ label{
     gap: 30px;
 
     .to_do_box {
-        width: 300px;
+        min-width: 300px;
         background-color: #eee;
         border-radius: 3px;
         border: 1px solid #e1e1e1;
@@ -80,8 +81,25 @@ label{
             padding: 2px 4px;
         }
         .to_do_box_description{
-            margin: 10px 0 4px 0;
+            margin: 10px 0 10px 0;
             padding-inline: 4px;
         }
+    }
+}
+
+.footer_controls {
+    background-color: rgba(0, 0, 255, 0.39);
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .remove{
+        font-size: 16px;
+        padding: 2px 4px;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: capitalize;
     }
 }

@@ -44,12 +44,24 @@ const add_task_to_page = (empty_array) => {
         box_description.setAttribute('data-d', task.id);
         box_description.appendChild(document.createTextNode(task.description));
         task_box.appendChild(box_description);
-        if (task.finally === true) {
-            task_box.id = 'done';
-        }
         task_box.appendChild(box_title);
         task_box.appendChild(box_description);
         task_boxes.appendChild(task_box);
+        let footer_controls = document.createElement('div');
+        footer_controls.className = 'footer_controls';
+        let finally_btn = document.createElement('button');
+        finally_btn.className = 'remove';
+        finally_btn.appendChild(document.createTextNode('remove'));
+        footer_controls.appendChild(finally_btn);
+        task_box.appendChild(footer_controls);
+        if (task.finally === true) {
+            task_box.id = 'done';
+        }
     });
 };
+task_boxes.addEventListener('click', (e) => {
+    if (e.target.classList.contains("to_do_box")) {
+        e.target.classList.toggle("done");
+    }
+});
 //# sourceMappingURL=main.js.map
