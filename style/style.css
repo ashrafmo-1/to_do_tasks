@@ -92,3 +92,14 @@ label{
         }
     }
 }
+
+@media(max-width: 820px) {
+   form .inputs {
+        flex-direction: column;
+    }
+}
+@media(max-width: 469px) {
+   form {
+        flex-direction: column;
+    }
+}
