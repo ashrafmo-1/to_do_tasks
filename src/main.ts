@@ -5,8 +5,8 @@ let btn_add_task = <HTMLButtonElement> document.querySelector('.addTask');
 let task_boxes = <HTMLDivElement> document.querySelector('.to_do_boxes');
 let empty_array: any[] = [];
 
-let storedData = window.localStorage.getItem("tasks");
 
+let storedData = window.localStorage.getItem("tasks");
 if (storedData) {
     empty_array = JSON.parse(storedData);
 }
@@ -82,4 +82,22 @@ function get_data_localStorage() {
         add_task_to_page(tasks)
     }
 }
+// treger function
 get_data_localStorage()
+
+
+
+
+
+
+
+
+
+
+// controls all threme
+let controls_theme = <HTMLDivElement> document.querySelector('.controls_theme');
+let gears_btn = <HTMLImageElement> document.querySelector('.gears .btn_gears');
+
+gears_btn.addEventListener("click", () => {
+    controls_theme.classList.toggle('active')
+})

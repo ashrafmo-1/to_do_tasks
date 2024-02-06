@@ -69,4 +69,9 @@ function get_data_localStorage() {
     }
 }
 get_data_localStorage();
+let controls_theme = document.querySelector('.controls_theme');
+let gears_btn = document.querySelector('.gears .btn_gears');
+gears_btn.addEventListener("click", () => {
+    controls_theme.classList.toggle('active');
+});
 //# sourceMappingURL=main.js.map
