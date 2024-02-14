@@ -22,6 +22,12 @@ btn_add_task.addEventListener('click', (e) => {
         console.error('you hava error i dont we will fix this soon');
     }
 });
+task_boxes.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
+    removeTask_fromLocalStorage(e.target.parentElement.getAttribute('id_data'));
+});
 const add_task_to_arr = (title, desc) => {
     let task = {
         id: Date.now(),
@@ -39,17 +45,21 @@ const add_task_to_page = (empty_array) => {
     empty_array.forEach((task) => {
         let task_box = document.createElement('div');
         task_box.className = 'to_do_box';
+        task_box.setAttribute('id_data', task.id);
         let box_title = document.createElement('h3');
         box_title.className = 'to_do_box_title';
-        box_title.setAttribute('data-id', task.id);
         box_title.appendChild(document.createTextNode(task.title));
         task_box.appendChild(box_title);
         let box_description = document.createElement('h3');
         box_description.className = 'to_do_box_description';
         box_description.setAttribute('data-d', task.id);
         box_description.appendChild(document.createTextNode(task.description));
+        let remove_task = document.createElement('span');
+        remove_task.className = 'delete';
+        remove_task.appendChild(document.createTextNode('remove'));
         task_box.appendChild(box_description);
         task_box.appendChild(box_title);
+        task_box.appendChild(remove_task);
         task_box.appendChild(box_description);
         task_boxes.appendChild(task_box);
         if (task.finally === true) {
@@ -69,6 +79,10 @@ function get_data_localStorage() {
     }
 }
 get_data_localStorage();
+const removeTask_fromLocalStorage = (id_tasks) => {
+    empty_array = empty_array.filter((allTasks) => allTasks.id != id_tasks);
+    set_data_localStorage(empty_array);
+};
 let controls_theme = document.querySelector('.controls_theme');
 let gears_btn = document.querySelector('.gears .btn_gears');
 gears_btn.addEventListener("click", () => {

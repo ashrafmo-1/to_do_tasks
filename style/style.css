@@ -87,6 +87,7 @@ label{
         background-color: #eee;
         border-radius: 3px;
         border: 1px solid var(--e1-color);
+        position: relative;
         
         .to_do_box_title{
             background-color: var(--e1-color);
@@ -97,6 +98,16 @@ label{
             padding-inline: 4px;
             color: #777;
             overflow-wrap:break-word;
+        }
+        .delete{
+            background-color: red;
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            color: white;
+            border-radius: 4px;
+            padding-inline: 2px;
+            cursor: pointer;
         }
     }
 }
@@ -112,6 +123,8 @@ label{
     }
 }
 
+
+/* page controls */
 .controls_theme{
         width: 220px !important;
         background-color: rgb(211, 211, 211);

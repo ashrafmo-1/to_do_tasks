@@ -25,6 +25,15 @@ btn_add_task.addEventListener('click', (e) => {
     }
 })
 
+task_boxes.addEventListener('click', (e: any) => {
+    if(e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
+    // delete task from localStorage
+    removeTask_fromLocalStorage(e.target.parentElement.getAttribute('id_data'));
+})
+
+
 const add_task_to_arr = (title: string | number, desc: string | number) => {
     // data of task
     let task = {
@@ -48,17 +57,22 @@ const add_task_to_page = (empty_array: any) => {
     empty_array.forEach((task: any) => {
         let task_box = document.createElement('div');
         task_box.className = 'to_do_box';
+        task_box.setAttribute('id_data', task.id);
         let box_title = document.createElement('h3'); // task title
         box_title.className = 'to_do_box_title';
-        box_title.setAttribute('data-id', task.id);
         box_title.appendChild(document.createTextNode(task.title));
         task_box.appendChild(box_title);
         let box_description = document.createElement('h3'); // task description
         box_description.className = 'to_do_box_description';
         box_description.setAttribute('data-d', task.id);
         box_description.appendChild(document.createTextNode(task.description))
+        let remove_task = document.createElement('span');
+        remove_task.className = 'delete';
+        remove_task.appendChild(document.createTextNode('remove'))
         task_box.appendChild(box_description);
         task_box.appendChild(box_title);
+        task_box.appendChild(remove_task);
+
         task_box.appendChild(box_description);
         task_boxes.appendChild(task_box);
         // task completed
@@ -87,7 +101,14 @@ get_data_localStorage()
 
 
 
+const removeTask_fromLocalStorage = (id_tasks: any) => {
+    // for (let i = 0; i < empty_array.length; i++) {
+    //     console.log(empty_array[i].id, id_tasks);
+    // }
 
+    empty_array = empty_array.filter((allTasks) => allTasks.id != id_tasks)
+    set_data_localStorage(empty_array)
+}
 
 
 
@@ -97,7 +118,6 @@ get_data_localStorage()
 // controls all threme
 let controls_theme = <HTMLDivElement> document.querySelector('.controls_theme');
 let gears_btn = <HTMLImageElement> document.querySelector('.gears .btn_gears');
-
 gears_btn.addEventListener("click", () => {
     controls_theme.classList.toggle('active')
 })
