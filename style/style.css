@@ -110,6 +110,14 @@ label{
             cursor: pointer;
         }
     }
+    .to_do_box.done {
+        background-color: rgba(255, 0, 0, 0.247);
+        user-select: none;
+
+        .to_do_box_title{
+            background-color: rgba(255, 0, 0, 0.404);
+        }
+    }
 }
 
 @media(max-width: 820px) {

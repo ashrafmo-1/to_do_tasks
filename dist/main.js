@@ -22,12 +22,6 @@ btn_add_task.addEventListener('click', (e) => {
         console.error('you hava error i dont we will fix this soon');
     }
 });
-task_boxes.addEventListener('click', (e) => {
-    if (e.target.classList.contains('delete')) {
-        e.target.parentElement.remove();
-    }
-    removeTask_fromLocalStorage(e.target.parentElement.getAttribute('id_data'));
-});
 const add_task_to_arr = (title, desc) => {
     let task = {
         id: Date.now(),
@@ -57,19 +51,31 @@ const add_task_to_page = (empty_array) => {
         let remove_task = document.createElement('span');
         remove_task.className = 'delete';
         remove_task.appendChild(document.createTextNode('remove'));
+        let finally_task = document.createElement('span');
+        finally_task.className = 'finally';
+        finally_task.appendChild(document.createTextNode('finally'));
         task_box.appendChild(box_description);
         task_box.appendChild(box_title);
         task_box.appendChild(remove_task);
+        task_box.appendChild(finally_task);
         task_box.appendChild(box_description);
         task_boxes.appendChild(task_box);
-        if (task.finally === true) {
-            task_box.id = 'done';
+        if (task.finally) {
+            task_box.className = 'to_do_box done';
         }
+        remove_task.onclick = (e) => {
+            e.target.parentElement.remove();
+            removeTask_fromLocalStorage(e.target.parentElement.getAttribute('id_data'));
+        };
+        finally_task.addEventListener('click', (e) => {
+            task_box.classList.toggle('done');
+            finallyTask_localStorage(e.target.parentElement.getAttribute('id_data'));
+        });
     });
 };
 function set_data_localStorage(empty_array) {
-    let x = window.localStorage.setItem("tasks", JSON.stringify(empty_array));
-    console.log(x);
+    let set_data = window.localStorage.setItem("tasks", JSON.stringify(empty_array));
+    console.log(set_data);
 }
 function get_data_localStorage() {
     let data = window.localStorage.getItem("tasks");
@@ -81,6 +87,14 @@ function get_data_localStorage() {
 get_data_localStorage();
 const removeTask_fromLocalStorage = (id_tasks) => {
     empty_array = empty_array.filter((allTasks) => allTasks.id != id_tasks);
+    set_data_localStorage(empty_array);
+};
+const finallyTask_localStorage = (id_tasks) => {
+    for (let i = 0; i < empty_array.length; i++) {
+        if (empty_array[i].id == id_tasks) {
+            empty_array[i].finally == false ? empty_array[i].finally = true : empty_array[i].finally = false;
+        }
+    }
     set_data_localStorage(empty_array);
 };
 let controls_theme = document.querySelector('.controls_theme');

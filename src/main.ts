@@ -5,7 +5,6 @@ let btn_add_task = <HTMLButtonElement> document.querySelector('.addTask');
 let task_boxes = <HTMLDivElement> document.querySelector('.to_do_boxes');
 let empty_array: any[] = [];
 
-
 let storedData = window.localStorage.getItem("tasks");
 if (storedData) {
     empty_array = JSON.parse(storedData);
@@ -24,15 +23,6 @@ btn_add_task.addEventListener('click', (e) => {
         console.error('you hava error i dont we will fix this soon');
     }
 })
-
-task_boxes.addEventListener('click', (e: any) => {
-    if(e.target.classList.contains('delete')) {
-        e.target.parentElement.remove();
-    }
-    // delete task from localStorage
-    removeTask_fromLocalStorage(e.target.parentElement.getAttribute('id_data'));
-})
-
 
 const add_task_to_arr = (title: string | number, desc: string | number) => {
     // data of task
@@ -69,25 +59,41 @@ const add_task_to_page = (empty_array: any) => {
         let remove_task = document.createElement('span');
         remove_task.className = 'delete';
         remove_task.appendChild(document.createTextNode('remove'))
+
+        let finally_task = document.createElement('span');
+        finally_task.className = 'finally';
+        finally_task.appendChild(document.createTextNode('finally'))
+
         task_box.appendChild(box_description);
         task_box.appendChild(box_title);
         task_box.appendChild(remove_task);
+        task_box.appendChild(finally_task);
 
         task_box.appendChild(box_description);
         task_boxes.appendChild(task_box);
         // task completed
-        if (task.finally === true) {
-            task_box.id = 'done';
+        if (task.finally) {
+            task_box.className = 'to_do_box done';
         }
+
+        //* remove task */
+        remove_task.onclick = (e: any): void => {
+            e.target.parentElement.remove();
+            removeTask_fromLocalStorage(e.target.parentElement.getAttribute('id_data'));
+        }
+
+        //* task is done or no */
+        finally_task.addEventListener('click', (e: any) => {
+            task_box.classList.toggle('done');
+            finallyTask_localStorage(e.target.parentElement.getAttribute('id_data'));
+        })
     });
 }
-
 // set data on localStorage
 function set_data_localStorage(empty_array: any) {
-    let x = window.localStorage.setItem("tasks", JSON.stringify(empty_array))
-    console.log(x);
+    let set_data= window.localStorage.setItem("tasks", JSON.stringify(empty_array))
+    console.log(set_data);
 }
-
 // get data on localStorage
 function get_data_localStorage() {
     let data = window.localStorage.getItem("tasks");
@@ -98,22 +104,20 @@ function get_data_localStorage() {
 }
 // treger function
 get_data_localStorage()
-
-
-
+// remove task from localStorage
 const removeTask_fromLocalStorage = (id_tasks: any) => {
-    // for (let i = 0; i < empty_array.length; i++) {
-    //     console.log(empty_array[i].id, id_tasks);
-    // }
-
-    empty_array = empty_array.filter((allTasks) => allTasks.id != id_tasks)
+    empty_array = empty_array.filter((allTasks: any) => allTasks.id != id_tasks)
     set_data_localStorage(empty_array)
 }
 
-
-
-
-
+const finallyTask_localStorage = (id_tasks: any) => {
+    for (let i = 0; i < empty_array.length; i++) {
+        if(empty_array[i].id == id_tasks) {
+            empty_array[i].finally == false ? empty_array[i].finally = true : empty_array[i].finally = false
+        }
+    }
+    set_data_localStorage(empty_array)
+}
 
 // controls all threme
 let controls_theme = <HTMLDivElement> document.querySelector('.controls_theme');
