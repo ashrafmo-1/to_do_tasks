@@ -60,9 +60,9 @@ const add_task_to_page = (empty_array: any) => {
         remove_task.className = 'delete';
         remove_task.appendChild(document.createTextNode('remove'))
 
-        let finally_task = document.createElement('span');
+        let finally_task = document.createElement('img');
         finally_task.className = 'finally';
-        finally_task.appendChild(document.createTextNode('finally'))
+        finally_task.src = "../assets/check-mark.png";
 
         task_box.appendChild(box_description);
         task_box.appendChild(box_title);

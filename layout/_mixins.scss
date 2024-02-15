@@ -1,0 +1,21 @@
+@mixin Grid-Boxes($box_width) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($box_width, 1fr));
+    gap: 40px;
+}
+
+@mixin flex-content($position) {
+    display: flex;
+    justify-content: $position;
+    align-items: center;
+}
+
+@mixin width-center($widht) {
+    width: $widht;
+    margin: auto !important;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}

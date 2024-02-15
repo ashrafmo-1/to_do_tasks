@@ -1,0 +1,231 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  text-transform: capitalize;
+}
+
+.to_do, .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.to_do > .header, .header > .header {
+  background-color: rgb(238, 238, 238);
+  width: 100%;
+  margin-bottom: 40px;
+}
+.to_do > .header > .title, .header > .header > .title {
+  font-size: 22px;
+}
+
+form {
+  padding-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  gap: 10px;
+}
+form .inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+form .inputs .input {
+  width: 350px;
+  height: 35px;
+  border-radius: 4px;
+  font-size: 20px;
+  border: 1px solid rgb(225, 225, 225);
+  padding-inline: 4px;
+}
+form .inputs .label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+form .addTask {
+  color: white;
+  background-color: rgb(0, 0, 255);
+  padding: 0 6px;
+  font-size: 15px;
+  border-radius: 3px;
+  height: 35px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+}
+
+.tasks_content {
+  width: 80%;
+  margin: auto !important;
+}
+
+.to_do_boxes {
+  margin: 30px 0;
+  display: -ms-grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 40px;
+}
+.to_do_boxes .to_do_box {
+  background-color: rgb(238, 238, 238);
+  border-radius: 3px;
+  border: 1px solid rgb(225, 225, 225);
+  position: relative;
+}
+.to_do_boxes .to_do_box .to_do_box_title {
+  background-color: rgb(225, 225, 225);
+  padding: 2px 4px;
+}
+.to_do_boxes .to_do_box .to_do_box_description {
+  margin: 10px 0 10px 0;
+  padding-inline: 4px;
+  color: rgb(119, 119, 119);
+  overflow-wrap: break-word;
+}
+.to_do_boxes .to_do_box .delete {
+  background-color: rgb(255, 0, 0);
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  color: rgb(255, 255, 255);
+  border-radius: 4px;
+  padding-inline: 2px;
+  cursor: pointer;
+}
+.to_do_boxes .to_do_box .finally {
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.to_do_boxes .to_do_box.done {
+  background-color: rgba(255, 0, 0, 0.247);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.to_do_boxes .to_do_box.done .to_do_box_title {
+  background-color: rgba(255, 0, 0, 0.404);
+}
+
+@media (max-width: 820px) {
+  form .inputs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+@media (max-width: 469px) {
+  form {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+/* page controls */
+.controls_theme {
+  width: 220px !important;
+  background-color: rgb(211, 211, 211);
+  height: 80vh;
+  position: absolute;
+  top: 50px;
+  left: -220px;
+  border: 1px solid rgb(119, 119, 119);
+  padding-inline: 4px;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+.controls_theme .gears img {
+  width: 30px;
+  position: absolute;
+  right: -30px;
+  background-color: rgb(211, 211, 211);
+  border: 1px solid rgb(119, 119, 119);
+  top: 20px;
+  cursor: pointer;
+}
+.controls_theme .header_controls {
+  color: rgb(0, 0, 255);
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.controls_theme.active {
+  left: 0;
+}
+.controls_theme.active .themes_title {
+  font-size: 12px;
+  padding-inline: 5px;
+}
+.controls_theme.active .change_theme {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(225, 225, 225);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.controls_theme.active .change_theme .white_blue, .controls_theme.active .change_theme .dark_blue, .controls_theme.active .change_theme .white_red, .controls_theme.active .change_theme .dark_red {
+  width: 20%;
+  height: 100%;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+}
+.controls_theme.active .change_theme .white_blue, .controls_theme.active .change_theme .dark_blue, .controls_theme.active .change_theme .white_red, .controls_theme.active .change_theme .dark_red {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid rgb(119, 119, 119);
+}
+.controls_theme.active .change_theme .white_blue .theme_1, .controls_theme.active .change_theme .white_blue .theme_2, .controls_theme.active .change_theme .dark_blue .theme_1, .controls_theme.active .change_theme .dark_blue .theme_2, .controls_theme.active .change_theme .white_red .theme_1, .controls_theme.active .change_theme .white_red .theme_2, .controls_theme.active .change_theme .dark_red .theme_1, .controls_theme.active .change_theme .dark_red .theme_2 {
+  width: 50%;
+  height: 100%;
+}
+.controls_theme.active .change_theme .white_blue .theme_1, .controls_theme.active .change_theme .white_red .theme_1 {
+  background-color: rgb(255, 255, 255);
+}
+.controls_theme.active .change_theme .white_blue .theme_2, .controls_theme.active .change_theme .dark_blue .theme_2 {
+  background-color: rgb(0, 0, 255);
+}
+.controls_theme.active .change_theme .dark_blue .theme_1, .controls_theme.active .change_theme .dark_red .theme_1 {
+  background-color: rgb(0, 0, 0);
+}
+.controls_theme.active .change_theme .white_red .theme_2, .controls_theme.active .change_theme .dark_red .theme_2 {
+  background-color: rgb(255, 0, 0);
+}
+/*# sourceMappingURL=main.css.map */
