@@ -102,4 +102,9 @@ let gears_btn = document.querySelector('.gears .btn_gears');
 gears_btn.addEventListener("click", () => {
     controls_theme.classList.toggle('active');
 });
+let themeOne_white_blue = document.querySelector(".white_blue");
+let themeOne_dark_blue = document.querySelector(".dark_blue");
+let themeOne_white_red = document.querySelector(".white_red");
+let themeOne_dark_red = document.querySelector(".dark_red");
+console.log(themeOne_white_blue, themeOne_dark_blue, themeOne_white_red, themeOne_dark_red);
 //# sourceMappingURL=main.js.map

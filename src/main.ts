@@ -125,3 +125,10 @@ let gears_btn = <HTMLImageElement> document.querySelector('.gears .btn_gears');
 gears_btn.addEventListener("click", () => {
     controls_theme.classList.toggle('active')
 })
+
+let themeOne_white_blue = document.querySelector(".white_blue") as Element;
+let themeOne_dark_blue = document.querySelector(".dark_blue") as Element;
+let themeOne_white_red = document.querySelector(".white_red") as Element;
+let themeOne_dark_red = document.querySelector(".dark_red") as Element;
+console.log(themeOne_white_blue, themeOne_dark_blue, themeOne_white_red, themeOne_dark_red);
+
