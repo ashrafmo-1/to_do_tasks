@@ -102,9 +102,17 @@ let gears_btn = document.querySelector('.gears .btn_gears');
 gears_btn.addEventListener("click", () => {
     controls_theme.classList.toggle('active');
 });
-let themeOne_white_blue = document.querySelector(".white_blue");
-let themeOne_dark_blue = document.querySelector(".dark_blue");
-let themeOne_white_red = document.querySelector(".white_red");
-let themeOne_dark_red = document.querySelector(".dark_red");
-console.log(themeOne_white_blue, themeOne_dark_blue, themeOne_white_red, themeOne_dark_red);
+let themesChanger = document.querySelectorAll('.change_theme div');
+themesChanger.forEach((div) => {
+    div.addEventListener("click", (element) => {
+        console.log(element.target.dataset.color);
+        document.documentElement.style.setProperty("--main-color", element.target.dataset.color);
+    });
+});
+function activeFunction(e) {
+    e.target.parentElement.querySelectorAll('.active').forEach((el) => {
+        el.classList.remove('active');
+    });
+    e.target.classList.add('active');
+}
 //# sourceMappingURL=main.js.map

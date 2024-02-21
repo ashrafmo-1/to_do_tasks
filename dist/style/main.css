@@ -1,3 +1,7 @@
+:root {
+  --main-color: blue;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -71,7 +75,7 @@ form .inputs .label {
 }
 form .addTask {
   color: white;
-  background-color: rgb(0, 0, 255);
+  background-color: var(--main-color);
   padding: 0 6px;
   font-size: 15px;
   border-radius: 3px;
@@ -101,6 +105,7 @@ form .addTask {
 }
 .to_do_boxes .to_do_box .to_do_box_title {
   background-color: rgb(225, 225, 225);
+  color: var(--main-color);
   padding: 2px 4px;
 }
 .to_do_boxes .to_do_box .to_do_box_description {
@@ -120,7 +125,7 @@ form .addTask {
   cursor: pointer;
 }
 .to_do_boxes .to_do_box .finally {
-  width: 20px;
+  width: 25px;
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -175,7 +180,7 @@ form .addTask {
   cursor: pointer;
 }
 .controls_theme .header_controls {
-  color: rgb(0, 0, 255);
+  color: var(--main-color);
   font-size: 18px;
   text-align: center;
   margin-bottom: 20px;
@@ -200,32 +205,21 @@ form .addTask {
       -ms-flex-align: center;
           align-items: center;
 }
-.controls_theme.active .change_theme .white_blue, .controls_theme.active .change_theme .dark_blue, .controls_theme.active .change_theme .white_red, .controls_theme.active .change_theme .dark_red {
+.controls_theme.active .change_theme .blue, .controls_theme.active .change_theme .dark, .controls_theme.active .change_theme .red, .controls_theme.active .change_theme .green {
   width: 20%;
   height: 100%;
-  background-color: rgb(255, 0, 0);
   cursor: pointer;
 }
-.controls_theme.active .change_theme .white_blue, .controls_theme.active .change_theme .dark_blue, .controls_theme.active .change_theme .white_red, .controls_theme.active .change_theme .dark_red {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border: 1px solid rgb(119, 119, 119);
+.controls_theme.active .change_theme .blue {
+  background-color: #0000ff;
 }
-.controls_theme.active .change_theme .white_blue .theme_1, .controls_theme.active .change_theme .white_blue .theme_2, .controls_theme.active .change_theme .dark_blue .theme_1, .controls_theme.active .change_theme .dark_blue .theme_2, .controls_theme.active .change_theme .white_red .theme_1, .controls_theme.active .change_theme .white_red .theme_2, .controls_theme.active .change_theme .dark_red .theme_1, .controls_theme.active .change_theme .dark_red .theme_2 {
-  width: 50%;
-  height: 100%;
+.controls_theme.active .change_theme .dark {
+  background-color: #000000;
 }
-.controls_theme.active .change_theme .white_blue .theme_1, .controls_theme.active .change_theme .white_red .theme_1 {
-  background-color: rgb(255, 255, 255);
+.controls_theme.active .change_theme .red {
+  background-color: #ff0000;
 }
-.controls_theme.active .change_theme .white_blue .theme_2, .controls_theme.active .change_theme .dark_blue .theme_2 {
-  background-color: rgb(0, 0, 255);
-}
-.controls_theme.active .change_theme .dark_blue .theme_1, .controls_theme.active .change_theme .dark_red .theme_1 {
-  background-color: rgb(0, 0, 0);
-}
-.controls_theme.active .change_theme .white_red .theme_2, .controls_theme.active .change_theme .dark_red .theme_2 {
-  background-color: rgb(255, 0, 0);
+.controls_theme.active .change_theme .green {
+  background-color: #008000;
 }
 /*# sourceMappingURL=main.css.map */

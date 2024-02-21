@@ -126,9 +126,21 @@ gears_btn.addEventListener("click", () => {
     controls_theme.classList.toggle('active')
 })
 
-let themeOne_white_blue = document.querySelector(".white_blue") as Element;
-let themeOne_dark_blue = document.querySelector(".dark_blue") as Element;
-let themeOne_white_red = document.querySelector(".white_red") as Element;
-let themeOne_dark_red = document.querySelector(".dark_red") as Element;
-console.log(themeOne_white_blue, themeOne_dark_blue, themeOne_white_red, themeOne_dark_red);
 
+// start changes themes
+let themesChanger = document.querySelectorAll('.change_theme div');
+themesChanger.forEach((div) => {
+    div.addEventListener("click", (element: any) => {
+        console.log(element.target.dataset.color);
+        document.documentElement.style.setProperty("--main-color", element.target.dataset.color);
+    })
+})
+
+
+// handle Active class
+function activeFunction(e: any) {
+    e.target.parentElement.querySelectorAll('.active').forEach((el: Element) => {
+        el.classList.remove('active')
+    })
+    e.target.classList.add('active')
+}
