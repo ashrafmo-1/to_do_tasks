@@ -38,6 +38,7 @@ body {
 }
 .to_do > .header > .title, .header > .header > .title {
   font-size: 32px;
+  color: var(--main-color);
 }
 
 form {
@@ -61,7 +62,7 @@ form .inputs .input {
   height: 35px;
   border-radius: 4px;
   font-size: 20px;
-  border: 1px solid rgb(225, 225, 225);
+  border: 1px solid var(--main-color);
   padding-inline: 4px;
 }
 form .inputs .label {
@@ -102,6 +103,7 @@ form .addTask {
   border-radius: 3px;
   border: 1px solid rgb(225, 225, 225);
   position: relative;
+  border: 1px solid var(--main-color);
 }
 .to_do_boxes .to_do_box .to_do_box_title {
   background-color: rgb(225, 225, 225);
@@ -176,7 +178,7 @@ form .addTask {
   right: -30px;
   background-color: rgb(211, 211, 211);
   border: 1px solid rgb(119, 119, 119);
-  top: 20px;
+  bottom: 20px;
   cursor: pointer;
 }
 .controls_theme .header_controls {
@@ -221,5 +223,9 @@ form .addTask {
 }
 .controls_theme.active .change_theme .green {
   background-color: #008000;
+}
+.controls_theme.active .change_theme div.active {
+  border: 3px solid gold;
+  border-radius: 50%;
 }
 /*# sourceMappingURL=main.css.map */

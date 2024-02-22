@@ -131,16 +131,28 @@ gears_btn.addEventListener("click", () => {
 let themesChanger = document.querySelectorAll('.change_theme div');
 themesChanger.forEach((div) => {
     div.addEventListener("click", (element: any) => {
+        activeAction(element)
         console.log(element.target.dataset.color);
         document.documentElement.style.setProperty("--main-color", element.target.dataset.color);
+        window.sessionStorage.setItem("color_theme", element.target.dataset.color)
     })
 })
+// get data from local storage
+let theme = window.sessionStorage.getItem("color_theme");
+if (theme !== null) {
+    console.log(`theme is ${theme}`);
+    document.documentElement.style.setProperty("--main-color", theme);
 
+    themesChanger.forEach((element: any) => {
+        element.classList.remove("active");
+        if (element.dataset.color === theme) element.classList.add("active");
+    })
+}
 
 // handle Active class
-function activeFunction(e: any) {
+function activeAction(e: any) {
     e.target.parentElement.querySelectorAll('.active').forEach((el: Element) => {
-        el.classList.remove('active')
+        el.classList.remove('active');
     })
-    e.target.classList.add('active')
+    e.target.classList.add('active');
 }

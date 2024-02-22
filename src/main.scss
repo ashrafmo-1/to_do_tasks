@@ -31,6 +31,7 @@ body{
 
         > .title {
             font-size: 32px;
+            color: var(--main-color);
         }
     }
 }
@@ -49,7 +50,7 @@ form {
             height: 35px;
             border-radius: 4px;
             font-size: 20px;
-            border: 1px solid $e1-color;
+            border: 1px solid var(--main-color);
             padding-inline: 4px;
         }
         .label{
@@ -81,6 +82,7 @@ form {
         border-radius: 3px;
         border: 1px solid $e1-color;
         position: relative;
+        border: 1px solid var(--main-color);
 
         .to_do_box_title{
             background-color: $e1-color;
@@ -150,7 +152,7 @@ form {
         right: -30px;
         background-color:  $rgb211-color;
         border: 1px solid $rgb219-color;
-        top: 20px;
+        bottom: 20px;
         cursor: pointer;
     }
     .header_controls {
@@ -187,6 +189,11 @@ form {
             }
             .green{
                 background-color: #008000;
+            }
+
+            & div.active {
+                border: 3px solid gold;
+                border-radius: 50%;
             }
         }
     }
