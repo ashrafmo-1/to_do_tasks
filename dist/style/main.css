@@ -162,11 +162,11 @@ form .addTask {
 /* page controls */
 .controls_theme {
   width: 220px !important;
+  height: 20vh;
   background-color: rgb(211, 211, 211);
-  height: 80vh;
   position: absolute;
-  top: 50px;
-  left: -220px;
+  top: -140px;
+  left: 20px;
   border: 1px solid rgb(119, 119, 119);
   padding-inline: 4px;
   -webkit-transition: 0.5s ease-in-out;
@@ -175,10 +175,10 @@ form .addTask {
 .controls_theme .gears img {
   width: 30px;
   position: absolute;
-  right: -30px;
+  left: 0px;
   background-color: rgb(211, 211, 211);
   border: 1px solid rgb(119, 119, 119);
-  bottom: 20px;
+  bottom: -30px;
   cursor: pointer;
 }
 .controls_theme .header_controls {
@@ -188,7 +188,7 @@ form .addTask {
   margin-bottom: 20px;
 }
 .controls_theme.active {
-  left: 0;
+  top: 0;
 }
 .controls_theme.active .themes_title {
   font-size: 12px;
